@@ -249,13 +249,15 @@ body {
   section.interactive-elements {
     > * {
       opacity: 0;
-      height: 0;
+      max-height: 0;
+      overflow: hidden;
+      position: absolute;
       pointer-events: none;
       transform: translateY(10px);
-      position: absolute;
       transition: opacity 0.2s, transform 0.2s;
 
       &.open {
+        max-height: 10000px;
         pointer-events: auto;
         opacity: 1;
         transform: translateY(0);
@@ -271,6 +273,7 @@ body {
 
           li {
             transition: background-color 0.2s;
+
             &:hover {
               background-color: $branding_black_alpha;
             }
