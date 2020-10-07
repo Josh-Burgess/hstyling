@@ -68,6 +68,18 @@ body {
         &:hover {
           color: $branding_pink;
         }
+
+        &.has-dropdown {
+          i.fa-caret-right {
+            transition: transform 0.2s;
+          }
+
+          &.open {
+            i.fa-caret-right {
+              transform: rotateZ(90deg);
+            }
+          }
+        }
       }
     }
 
@@ -227,6 +239,52 @@ body {
 
             &:hover {
               color: $branding_pink;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  section.interactive-elements {
+    > * {
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(10px);
+      position: absolute;
+      transition: opacity 0.2s, transform 0.2s;
+
+      &.open {
+        pointer-events: auto;
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      &[class*="-dropdown"] {
+        background-color: $branding_pink;
+
+        ul {
+          padding: 0;
+          margin: 0;
+          list-style: none;
+
+          li {
+            transition: background-color 0.2s;
+            &:hover {
+              background-color: $branding_black_alpha;
+            }
+
+            a {
+              color: $branding_black_alpha;
+              text-decoration: none;
+              display: block;
+              padding: 10px;
+              font-size: 20px;
+              transition: color 0.2s;
+
+              &:hover {
+                color: $branding_pink;
+              }
             }
           }
         }

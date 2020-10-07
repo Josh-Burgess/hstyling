@@ -36,6 +36,12 @@ body header nav a {
 body header nav a:hover {
   color: #e1c3cd;
 }
+body header nav a.has-dropdown i.fa-caret-right {
+  transition: transform 0.2s;
+}
+body header nav a.has-dropdown.open i.fa-caret-right {
+  transform: rotateZ(90deg);
+}
 body header .social {
   position: absolute;
   height: 80px;
@@ -206,6 +212,43 @@ body footer div.info ul li a {
   transition: color 0.2s;
 }
 body footer div.info ul li a:hover {
+  color: #e1c3cd;
+}
+body section.interactive-elements > * {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(10px);
+  position: absolute;
+  transition: opacity 0.2s, transform 0.2s;
+}
+body section.interactive-elements > *.open {
+  pointer-events: auto;
+  opacity: 1;
+  transform: translateY(0);
+}
+body section.interactive-elements > *[class*=-dropdown] {
+  background-color: #e1c3cd;
+}
+body section.interactive-elements > *[class*=-dropdown] ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+body section.interactive-elements > *[class*=-dropdown] ul li {
+  transition: background-color 0.2s;
+}
+body section.interactive-elements > *[class*=-dropdown] ul li:hover {
+  background-color: rgba(25, 25, 25, 0.9);
+}
+body section.interactive-elements > *[class*=-dropdown] ul li a {
+  color: rgba(25, 25, 25, 0.9);
+  text-decoration: none;
+  display: block;
+  padding: 10px;
+  font-size: 20px;
+  transition: color 0.2s;
+}
+body section.interactive-elements > *[class*=-dropdown] ul li a:hover {
   color: #e1c3cd;
 }
 
