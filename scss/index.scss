@@ -4,6 +4,32 @@ $branding_black: rgb(25, 25, 25);
 $branding_black_alpha: rgba(25, 25, 25, 0.9);
 $branding_white: #f5f5f5;
 
+@mixin social-links($height) {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+
+  li {
+    a {
+      text-decoration: none;
+      color: $branding_white;
+      transition: color 0.2s;
+      font-size: 14px;
+      line-height: #{$height + 10}px;
+      padding: 0 10px;
+      display: inline-block;
+      height: 100%;
+
+      &:hover {
+        color: $branding_pink;
+      }
+    }
+  }
+}
+
 body {
   min-height: calc(100vh + 10px);
   margin: 0;
@@ -17,6 +43,7 @@ body {
     height: 80px;
     background-color: $branding_black_alpha;
     position: relative;
+    z-index: 10;
 
     nav {
       display: flex;
@@ -41,6 +68,16 @@ body {
         &:hover {
           color: $branding_pink;
         }
+      }
+    }
+
+    .social {
+      position: absolute;
+      height: 80px;
+      left: 140px;
+
+      .social-links {
+        @include social-links(80);
       }
     }
   }
@@ -94,18 +131,17 @@ body {
     .pseudo-background {
       position: absolute;
       top: 0;
-      bottom: 0;
+      bottom: -140px;
       left: 0;
       right: 0;
-      background-image: linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.4) 20%, rgba(0, 0, 0, 0) 100%), url(../images/watercolor.png);
-      background-position: 50% 50%;
+      background-image: linear-gradient(0deg, black 150px, rgba(0, 0, 0, 0.4) calc(20% + 150px), rgba(0, 0, 0, 0) 100%), url(../images/watercolor.png);
+      background-position: center center, 50% 50%;
       background-repeat: no-repeat;
       background-size: cover, cover;
       transition: transform 2.5s, background-position 2.5s;
     }
 
     &.dom-loaded {
-
       .pseudo-background {
         transform: scale(1.1);
         background-position: center, 50% 0;
@@ -138,9 +174,22 @@ body {
     transition: max-height 1.5s;
     font-size: 20px;
     margin-top: -5px;
+    position: relative;
 
     &.viewable {
       max-height: 140px;
+    }
+
+    .social {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 15;
+
+      .social-links {
+        @include social-links(60);
+      }
     }
 
     div.info {

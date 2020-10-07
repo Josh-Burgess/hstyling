@@ -11,6 +11,7 @@ body header {
   height: 80px;
   background-color: rgba(25, 25, 25, 0.9);
   position: relative;
+  z-index: 10;
 }
 body header nav {
   display: flex;
@@ -33,6 +34,32 @@ body header nav a {
   transition: color 0.2s;
 }
 body header nav a:hover {
+  color: #e1c3cd;
+}
+body header .social {
+  position: absolute;
+  height: 80px;
+  left: 140px;
+}
+body header .social .social-links {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+}
+body header .social .social-links li a {
+  text-decoration: none;
+  color: #f5f5f5;
+  transition: color 0.2s;
+  font-size: 14px;
+  line-height: 90px;
+  padding: 0 10px;
+  display: inline-block;
+  height: 100%;
+}
+body header .social .social-links li a:hover {
   color: #e1c3cd;
 }
 body .logo {
@@ -79,11 +106,11 @@ body .main-landing {
 body .main-landing .pseudo-background {
   position: absolute;
   top: 0;
-  bottom: 0;
+  bottom: -140px;
   left: 0;
   right: 0;
-  background-image: linear-gradient(0deg, black 0%, rgba(0, 0, 0, 0.4) 20%, rgba(0, 0, 0, 0) 100%), url(../images/watercolor.png);
-  background-position: 50% 50%;
+  background-image: linear-gradient(0deg, black 150px, rgba(0, 0, 0, 0.4) calc(20% + 150px), rgba(0, 0, 0, 0) 100%), url(../images/watercolor.png);
+  background-position: center center, 50% 50%;
   background-repeat: no-repeat;
   background-size: cover, cover;
   transition: transform 2.5s, background-position 2.5s;
@@ -113,9 +140,38 @@ body footer {
   transition: max-height 1.5s;
   font-size: 20px;
   margin-top: -5px;
+  position: relative;
 }
 body footer.viewable {
   max-height: 140px;
+}
+body footer .social {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 15;
+}
+body footer .social .social-links {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+}
+body footer .social .social-links li a {
+  text-decoration: none;
+  color: #f5f5f5;
+  transition: color 0.2s;
+  font-size: 14px;
+  line-height: 70px;
+  padding: 0 10px;
+  display: inline-block;
+  height: 100%;
+}
+body footer .social .social-links li a:hover {
+  color: #e1c3cd;
 }
 body footer div.info {
   height: 140px;
