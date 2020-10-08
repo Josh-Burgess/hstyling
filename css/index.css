@@ -6,14 +6,16 @@ body {
   justify-content: stretch;
   font-size: 10px;
   font-family: "Josefin Sans", sans-serif;
+  background-color: black;
 }
-body header {
+body > header {
   height: 80px;
+  width: 100vw;
   background-color: rgba(25, 25, 25, 0.9);
-  position: relative;
-  z-index: 10;
+  position: fixed;
+  z-index: 100;
 }
-body header nav {
+body > header nav {
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
@@ -24,30 +26,30 @@ body header nav {
   right: 1vw;
   transform: translateY(-50%);
 }
-body header nav a {
+body > header nav a {
   display: inline-block;
   line-height: 80px;
   text-decoration: none;
   text-transform: uppercase;
-  color: #f5f5f5;
+  color: whitesmoke;
   padding: 0 20px;
   transition: color 0.2s;
 }
-body header nav a:hover {
+body > header nav a:hover {
   color: #e1c3cd;
 }
-body header nav a.has-dropdown i.fa-caret-right {
+body > header nav a.has-dropdown i.fa-caret-right {
   transition: transform 0.2s;
 }
-body header nav a.has-dropdown.open i.fa-caret-right {
+body > header nav a.has-dropdown.open i.fa-caret-right {
   transform: rotateZ(90deg);
 }
-body header .social {
+body > header .social {
   position: absolute;
   height: 80px;
   left: 140px;
 }
-body header .social .social-links {
+body > header .social .social-links {
   margin: 0;
   padding: 0;
   list-style: none;
@@ -55,9 +57,9 @@ body header .social .social-links {
   flex-direction: row;
   height: 100%;
 }
-body header .social .social-links li a {
+body > header .social .social-links li a {
   text-decoration: none;
-  color: #f5f5f5;
+  color: whitesmoke;
   transition: color 0.2s;
   font-size: 14px;
   line-height: 90px;
@@ -65,7 +67,7 @@ body header .social .social-links li a {
   display: inline-block;
   height: 100%;
 }
-body header .social .social-links li a:hover {
+body > header .social .social-links li a:hover {
   color: #e1c3cd;
 }
 body .logo {
@@ -99,7 +101,7 @@ body .logo.header {
   border: solid #191919 1px;
   z-index: 100;
 }
-body .main-landing {
+body .animate-bg-on-scroll {
   display: flex;
   flex: 1 1 auto;
   flex-direction: column;
@@ -107,30 +109,31 @@ body .main-landing {
   justify-content: center;
   text-align: center;
   overflow: hidden;
+  height: 100vh;
   position: relative;
+  margin-bottom: 10px;
 }
-body .main-landing .pseudo-background {
-  position: absolute;
-  top: 0;
-  bottom: -140px;
-  left: 0;
-  right: 0;
-  background-image: linear-gradient(0deg, black 150px, rgba(0, 0, 0, 0.4) calc(20% + 150px), rgba(0, 0, 0, 0) 100%), url(../images/watercolor.png);
-  background-position: center center, 50% 50%;
-  background-repeat: no-repeat;
-  background-size: cover, cover;
-  transition: transform 2.5s, background-position 2.5s;
+body .animate-bg-on-scroll > div:not(.pseudo-background), body .animate-bg-on-scroll > article {
+  transition: all 2s;
+  transition-delay: 0.5s;
 }
-body .main-landing.dom-loaded .pseudo-background {
-  transform: scale(1.1);
-  background-position: center, 50% 0;
+body .animate-bg-on-scroll:not(.main-landing) > div, body .animate-bg-on-scroll:not(.main-landing) > article {
+  transform: translateY(100%);
 }
-body .main-landing.dom-loaded.scrolled .pseudo-background {
-  background-position: center, 50% -40px;
+body .animate-bg-on-scroll:not(.main-landing).is-above > div, body .animate-bg-on-scroll:not(.main-landing).is-above > article {
+  transform: translateY(-100%);
 }
-body .main-landing .logo-wrapper {
+body .animate-bg-on-scroll.is-visible > div, body .animate-bg-on-scroll.is-visible > article {
+  transform: translateY(0);
+}
+body .animate-bg-on-scroll.dom-loaded.scrolled .pseudo-background {
+  background-position: center center, 50% -40px;
+}
+body .animate-bg-on-scroll > *:not(.pseudo-background) {
   position: relative;
   z-index: 10;
+}
+body .animate-bg-on-scroll .logo-wrapper {
   border-radius: 1.5rem;
   background-color: rgba(225, 195, 205, 0.7);
   padding: 20px;
@@ -139,14 +142,46 @@ body .main-landing .logo-wrapper {
   min-width: 170px;
   min-height: 170px;
 }
+body .animate-bg-on-scroll a.consult {
+  display: inline-block;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 600;
+  font-family: "Josefin Sans", sans-serif;
+  text-transform: uppercase;
+  line-height: 55px;
+  height: 50px;
+  color: whitesmoke;
+  background-color: rgba(25, 25, 25, 0.9);
+  border: none;
+  border-radius: 10px;
+  margin-top: 30px;
+  padding: 0 30px;
+  transition: color 0.2s, background-color 0.2s;
+}
+body .animate-bg-on-scroll a.consult:hover {
+  color: rgba(25, 25, 25, 0.9);
+  background-color: #e1c3cd;
+}
+body h1.show-on-scroll, body header.show-on-scroll {
+  transform: translateX(-99%);
+  transition: transform 2s;
+}
+body h1.show-on-scroll.is-visible, body header.show-on-scroll.is-visible {
+  transform: translateX(0);
+}
 body footer {
   background-color: black;
   max-height: 0;
+  width: 100vw;
   overflow: hidden;
   transition: max-height 1.5s;
   font-size: 20px;
   margin-top: -5px;
-  position: relative;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 100;
 }
 body footer.viewable {
   max-height: 140px;
@@ -168,7 +203,7 @@ body footer .social .social-links {
 }
 body footer .social .social-links li a {
   text-decoration: none;
-  color: #f5f5f5;
+  color: whitesmoke;
   transition: color 0.2s;
   font-size: 14px;
   line-height: 70px;
@@ -199,8 +234,8 @@ body footer div.info ul {
 body footer div.info ul li {
   flex: 0 1 auto;
   padding: 15px;
-  color: #f5f5f5;
-  border-right: solid 1px #f5f5f5;
+  color: whitesmoke;
+  border-right: solid 1px whitesmoke;
   white-space: nowrap;
 }
 body footer div.info ul li:last-child {
@@ -208,7 +243,7 @@ body footer div.info ul li:last-child {
 }
 body footer div.info ul li a {
   text-decoration: none;
-  color: #f5f5f5;
+  color: whitesmoke;
   transition: color 0.2s;
 }
 body footer div.info ul li a:hover {
@@ -253,6 +288,103 @@ body section.interactive-elements > *[class*=-dropdown] ul li a {
 }
 body section.interactive-elements > *[class*=-dropdown] ul li a:hover {
   color: #e1c3cd;
+}
+
+.closet-cleanse article {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 150px;
+  position: relative;
+}
+.closet-cleanse article header {
+  display: inline-block;
+  margin-bottom: 50px;
+  text-align: right;
+  padding: 20px 20px 20px 0;
+  background-color: #e1c3cd;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.closet-cleanse article header h1, .closet-cleanse article header h2 {
+  display: inline-block;
+  color: #191919;
+  margin: 0;
+}
+.closet-cleanse article header h1 {
+  font-size: 48px;
+  line-height: 50px;
+  white-space: nowrap;
+}
+.closet-cleanse article header h2 {
+  text-transform: uppercase;
+  padding-left: 10%;
+}
+.closet-cleanse article section {
+  flex: 0 1 40%;
+  background-color: rgba(245, 245, 245, 0.9);
+  border: solid 4px rgba(25, 25, 25, 0.9);
+  box-sizing: border-box;
+  display: inline-block;
+  padding: 20px 20px 20px 65px;
+  margin-left: 50px;
+  margin-bottom: 50px;
+  text-align: left;
+  position: relative;
+  opacity: 0;
+  transform: scale(0.7);
+  transition: opacity 2.5s, transform 2.5s;
+  transition-delay: 2s;
+  font-size: 16px;
+  line-height: 32px;
+}
+.closet-cleanse article section:first-of-type {
+  margin-left: 0;
+  transition-delay: 0.5s;
+}
+.closet-cleanse article section img {
+  border: solid 4px rgba(25, 25, 25, 0.9);
+  box-sizing: border-box;
+  position: absolute;
+  top: 30%;
+  left: -50px;
+  transform: translateY(-50%);
+}
+.closet-cleanse.is-visible article section {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.pseudo-background {
+  position: absolute;
+  top: 0;
+  bottom: -140px;
+  left: 0;
+  right: 0;
+  transition: transform 2.5s, background-position 2.5s, opacity 4.5s;
+  background-position: center center, 50% 50%;
+  background-repeat: no-repeat;
+  background-size: cover, cover;
+  opacity: 0;
+}
+.main-landing .pseudo-background {
+  background-image: linear-gradient(0deg, black 150px, rgba(0, 0, 0, 0.4) calc(20% + 150px), rgba(0, 0, 0, 0) 100%), url(../images/watercolor.png);
+}
+.main-landing.is-visible .pseudo-background {
+  transform: scale(1.1);
+  background-position: center, 50% 0;
+  opacity: 1;
+}
+.closet-cleanse .pseudo-background {
+  background-image: linear-gradient(0deg, black 150px, rgba(0, 0, 0, 0.4) calc(20% + 150px), rgba(0, 0, 0, 0) 100%), url(../images/closet.jpg);
+}
+.closet-cleanse.is-visible .pseudo-background {
+  transform: scale(1.1) translateY(0);
+  background-position: center, 50% 0;
+  opacity: 1;
 }
 
 /*# sourceMappingURL=index.css.map */
