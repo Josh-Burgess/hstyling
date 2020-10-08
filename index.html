@@ -45,18 +45,18 @@
   </div>
   <nav>
     <a href="/">Home</a>
-    <a class="has-dropdown dd-services" href="services/">Services <i class="fa fa-sm fa-caret-right"></i></a>
-    <a href="about-me/">About Me</a>
+    <a class="has-dropdown dd-services" href="#services">Services <i class="fa fa-sm fa-caret-right"></i></a>
+    <a href="#about-me">About Me</a>
   </nav>
 </header>
-<div class="animate-bg-on-scroll main-landing">
+<div data-href="/" class="animate-bg-on-scroll main-landing">
   <div class="pseudo-background"></div>
   <div class="logo-wrapper">
     <div class="logo main"></div>
   </div>
   <!--<a href="consult/" class="consult">Schedule Consultation</a>-->
 </div>
-<div class="animate-bg-on-scroll closet-cleanse">
+<div id="closet-cleanse" data-href="#closet-cleanse" class="animate-bg-on-scroll closet-cleanse">
   <div class="pseudo-background"></div>
   <article>
     <header class="show-on-scroll">
@@ -80,7 +80,7 @@
   </article>
   <!--<a href="../../consult/" class="consult">Schedule Consultation</a>-->
 </div>
-<div class="animate-bg-on-scroll about-me main-landing">
+<div id="about-me" data-href="#about-me" class="animate-bg-on-scroll about-me main-landing">
   <div class="pseudo-background"></div>
   <img src="images/Yolandie-Headshot.png" />
 </div>
@@ -122,7 +122,7 @@
   <div class="services-dropdown">
     <ul>
       <li><a href="services/bridal/">Bridal Styling</a></li>
-      <li><a href="services/closet-cleanse/">Closet Cleanse & Style</a></li>
+      <li><a href="#closet-cleanse">Closet Cleanse & Style</a></li>
       <li><a href="services/vip-styling/">VIP Styling</a></li>
       <li><a href="services/virtual-styling/">Virtual Styling</a></li>
     </ul>

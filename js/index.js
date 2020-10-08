@@ -19,6 +19,11 @@ document.addEventListener('DOMContentLoaded', () => {
 			if (entry.isIntersecting) {
 				if (entry.target.classList.contains('animate-bg-on-scroll') && entry.intersectionRatio >= 0.1) {
 					entry.target.classList.add('is-visible');
+					window.history.pushState(
+						{ 'html': document.documentElement.innerHTML },
+						`${entry.target.getAttribute('data-title')}`,
+						`${entry.target.getAttribute('data-href')}`
+					);
 					entry.target.classList.remove('is-above');
 				} else if (entry.target.classList.contains('show-on-scroll')) {
 					entry.target.classList.add('is-visible');
