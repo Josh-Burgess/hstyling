@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
 					window.history.pushState(
 						{ 'html': document.documentElement.innerHTML },
 						`${entry.target.getAttribute('data-title')}`,
-						`${window.location.href.indexOf('hstyling') > 0 ? '/hstyling/' : ''}${entry.target.getAttribute('data-href')}`
+						`${window.location.href.indexOf('hstyling') > 0 ? '/hstyling' : ''}${entry.target.getAttribute('data-href')}`
 					);
 					entry.target.classList.remove('is-above');
 				} else if (entry.target.classList.contains('show-on-scroll')) {
