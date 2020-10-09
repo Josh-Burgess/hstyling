@@ -477,15 +477,27 @@ body {
   background-size: cover, cover;
   opacity: 0;
 
-  &.video > video {
-    object-fit: cover;
-    width: 100vw;
-    height: 100vh;
-    position: absolute;;
-    top: 0;
-    left: 0;
-    z-index: 1;
-    transform: translateY(0);
+  &.video {
+    &:after {
+      content: ' ';
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      background-image: linear-gradient(0deg, black 150px, rgba(0, 0, 0, 0.4) calc(20% + 150px), rgba(0, 0, 0, 0) 100%);
+      z-index: 120;
+    }
+    > video {
+      object-fit: cover;
+      width: 100vw;
+      height: 100vh;
+      position: absolute;;
+      top: 0;
+      left: 0;
+      z-index: 1;
+      transform: translateY(0);
+    }
   }
 
   .main-landing.is-visible & {

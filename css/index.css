@@ -1,3 +1,4 @@
+@charset "UTF-8";
 body {
   min-height: calc(100vh + 10px);
   margin: 0;
@@ -400,6 +401,16 @@ body div.cost.show {
   background-repeat: no-repeat;
   background-size: cover, cover;
   opacity: 0;
+}
+.pseudo-background.video:after {
+  content: " ";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-image: linear-gradient(0deg, black 150px, rgba(0, 0, 0, 0.4) calc(20% + 150px), rgba(0, 0, 0, 0) 100%);
+  z-index: 120;
 }
 .pseudo-background.video > video {
   object-fit: cover;
