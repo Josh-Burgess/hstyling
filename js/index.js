@@ -3,27 +3,46 @@ document.addEventListener('DOMContentLoaded', () => {
 	const mainLanding = document.querySelector('body div.main-landing');
 	const yearSpan = document.querySelector('.year');
 	const hasDropdowns = document.querySelectorAll('.has-dropdown');
+	const scheduleBtn = document.querySelector('a.consult');
+	const costWindow = document.querySelector('div.cost');
 
 	// One opened dropdown timer
 	let openDD;
+	// One cost timer
+	let openCost;
 
 	// Interaction Observer Stuff
 	let ioOptions = {
 		root: null,
 		rootMargin: '0px',
-		threshold: [0.0, 0.1, 0.9, 1.0]
+		threshold: [0.0, 0.1, 0.5, 1.0]
 	};
 	const ioCallback = (entries) => {
 		entries.forEach(entry => {
 			const isAbove = entry.boundingClientRect.y <= entry.rootBounds.y + entry.target.offsetHeight;
 			if (entry.isIntersecting) {
-				if (entry.target.classList.contains('animate-bg-on-scroll') && entry.intersectionRatio >= 0.1) {
+				if (entry.target.classList.contains('animate-bg-on-scroll')
+					&& ((entry.intersectionRatio >= 0.1 && !isAbove) || (entry.intersectionRatio >= 0.5 && isAbove))) {
 					entry.target.classList.add('is-visible');
+
 					window.history.pushState(
 						{ 'html': document.documentElement.innerHTML },
 						`${entry.target.getAttribute('data-title')}`,
 						`${window.location.href.indexOf('hstyling') > 0 ? '/hstyling' : ''}${entry.target.getAttribute('data-href')}`
 					);
+
+					if (entry.target.hasAttribute('data-cost')) {
+						clearTimeout(openCost);
+						costWindow.innerText = entry.target.getAttribute('data-cost');
+						costWindow.classList.add('show');
+					} else {
+						costWindow.classList.remove('show');
+						openCost = setTimeout(() => {
+							costWindow.innerText = '';
+						}, 1000);
+					}
+
+					scheduleBtn.innerText = `Schedule ${entry.target.getAttribute('data-button-name')}`;
 					entry.target.classList.remove('is-above');
 				} else if (entry.target.classList.contains('show-on-scroll')) {
 					entry.target.classList.add('is-visible');
@@ -74,7 +93,6 @@ document.addEventListener('DOMContentLoaded', () => {
 		};
 		const ddML = (e) => {
 			e.stopPropagation();
-			console.log('left dropdown');
 			openDD = setTimeout(() => {
 				dropdown.classList.remove('open');
 				const dd = getDropdownMenu(dropdown);
