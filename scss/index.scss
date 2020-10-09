@@ -140,7 +140,7 @@ body {
     justify-content: center;
     text-align: center;
     overflow: hidden;
-    height: 100vh;
+    min-height: 100vh;
     position: relative;
     margin-bottom: 10px;
 
@@ -371,7 +371,16 @@ body {
   }
 }
 
-.closet-cleanse {
+.service {
+
+  &.vip-styling {
+    article {
+      section {
+        justify-content: flex-start !important;
+      }
+    }
+  }
+
   article {
     display: flex;
     flex-direction: row;
@@ -395,11 +404,13 @@ body {
         color: $branding_black;
         margin: 0;
       }
+
       h1 {
         font-size: 36px;
         line-height: 50px;
         white-space: nowrap;
       }
+
       h2 {
         text-transform: uppercase;
         font-size: 24px;
@@ -412,7 +423,9 @@ body {
       background-color: $branding_white_alpha;
       border: solid 4px $branding_black_alpha;
       box-sizing: border-box;
-      display: inline-block;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
       padding: 20px 20px 20px 65px;
       margin-left: 90px;
       margin-bottom: 50px;
@@ -427,7 +440,7 @@ body {
 
       &:first-of-type {
         margin-left: 0;
-        transition-delay: 0.5s!important;
+        transition-delay: 0.5s !important;
       }
 
       img {
@@ -464,13 +477,19 @@ body {
   background-size: cover, cover;
   opacity: 0;
 
-  .main-landing & {
-    background-image: linear-gradient(0deg, black 150px, rgba(0, 0, 0, 0.4) calc(20% + 150px), rgba(0, 0, 0, 0) 100%), url(../images/watercolor.png);
+  &.video > video {
+    object-fit: cover;
+    width: 100vw;
+    height: 100vh;
+    position: absolute;;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    transform: translateY(0);
   }
 
   .main-landing.is-visible & {
     transform: scale(1.1);
-    background-position: center, 50% 0;
     opacity: 1;
   }
 
@@ -479,6 +498,16 @@ body {
   }
 
   .closet-cleanse.is-visible & {
+    transform: scale(1.1) translateY(0);
+    background-position: center, 50% 0;
+    opacity: 1;
+  }
+
+  .about-me & {
+    background-image: linear-gradient(0deg, black 150px, rgba(0, 0, 0, 0.4) calc(20% + 150px), rgba(0, 0, 0, 0) 100%), url(../images/about-me-bg.png);
+  }
+
+  .about-me.is-visible & {
     transform: scale(1.1) translateY(0);
     background-position: center, 50% 0;
     opacity: 1;

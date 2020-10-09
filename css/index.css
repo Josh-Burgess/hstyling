@@ -109,7 +109,7 @@ body .animate-bg-on-scroll {
   justify-content: center;
   text-align: center;
   overflow: hidden;
-  height: 100vh;
+  min-height: 100vh;
   position: relative;
   margin-bottom: 10px;
 }
@@ -316,7 +316,10 @@ body div.cost.show {
   transition-delay: 4s;
 }
 
-.closet-cleanse article {
+.service.vip-styling article section {
+  justify-content: flex-start !important;
+}
+.service article {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -325,7 +328,7 @@ body div.cost.show {
   padding-top: 150px;
   position: relative;
 }
-.closet-cleanse article header {
+.service article header {
   display: inline-block;
   text-align: right;
   padding: 20px 20px 20px 0;
@@ -334,27 +337,29 @@ body div.cost.show {
   left: 0;
   top: -75px;
 }
-.closet-cleanse article header h1, .closet-cleanse article header h2 {
+.service article header h1, .service article header h2 {
   display: inline-block;
   color: #191919;
   margin: 0;
 }
-.closet-cleanse article header h1 {
+.service article header h1 {
   font-size: 36px;
   line-height: 50px;
   white-space: nowrap;
 }
-.closet-cleanse article header h2 {
+.service article header h2 {
   text-transform: uppercase;
   font-size: 24px;
   padding-left: 10%;
 }
-.closet-cleanse article section {
+.service article section {
   flex: 0 1 40%;
   background-color: rgba(245, 245, 245, 0.9);
   border: solid 4px rgba(25, 25, 25, 0.9);
   box-sizing: border-box;
-  display: inline-block;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   padding: 20px 20px 20px 65px;
   margin-left: 90px;
   margin-bottom: 50px;
@@ -366,11 +371,11 @@ body div.cost.show {
   font-size: 20px;
   line-height: 32px;
 }
-.closet-cleanse article section:first-of-type {
+.service article section:first-of-type {
   margin-left: 0;
   transition-delay: 0.5s !important;
 }
-.closet-cleanse article section img {
+.service article section img {
   border: solid 4px rgba(25, 25, 25, 0.9);
   box-sizing: border-box;
   position: absolute;
@@ -378,7 +383,7 @@ body div.cost.show {
   left: -50px;
   transform: translateY(-50%);
 }
-.closet-cleanse.is-visible article section {
+.service.is-visible article section {
   opacity: 1;
   transform: scale(1);
   transition-delay: 2s;
@@ -396,18 +401,32 @@ body div.cost.show {
   background-size: cover, cover;
   opacity: 0;
 }
-.main-landing .pseudo-background {
-  background-image: linear-gradient(0deg, black 150px, rgba(0, 0, 0, 0.4) calc(20% + 150px), rgba(0, 0, 0, 0) 100%), url(../images/watercolor.png);
+.pseudo-background.video > video {
+  object-fit: cover;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  transform: translateY(0);
 }
 .main-landing.is-visible .pseudo-background {
   transform: scale(1.1);
-  background-position: center, 50% 0;
   opacity: 1;
 }
 .closet-cleanse .pseudo-background {
   background-image: linear-gradient(0deg, black 150px, rgba(0, 0, 0, 0.4) calc(20% + 150px), rgba(0, 0, 0, 0) 100%), url(../images/closet.jpg);
 }
 .closet-cleanse.is-visible .pseudo-background {
+  transform: scale(1.1) translateY(0);
+  background-position: center, 50% 0;
+  opacity: 1;
+}
+.about-me .pseudo-background {
+  background-image: linear-gradient(0deg, black 150px, rgba(0, 0, 0, 0.4) calc(20% + 150px), rgba(0, 0, 0, 0) 100%), url(../images/about-me-bg.png);
+}
+.about-me.is-visible .pseudo-background {
   transform: scale(1.1) translateY(0);
   background-position: center, 50% 0;
   opacity: 1;
