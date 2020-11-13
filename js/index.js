@@ -5,6 +5,8 @@ document.addEventListener('DOMContentLoaded', () => {
 	const hasDropdowns = document.querySelectorAll('.has-dropdown');
 	const scheduleBtn = document.querySelector('a.consult');
 	const costWindow = document.querySelector('div.cost');
+	const hamburger = document.querySelector('.hamburger');
+	const nav = document.querySelector('header > nav');
 
 	// One opened dropdown timer
 	let openDD;
@@ -83,6 +85,11 @@ document.addEventListener('DOMContentLoaded', () => {
 		} else {
 			footer.classList.remove('viewable');
 		}
+	});
+
+	// Do Hamburgers on Mobile
+	hamburger.addEventListener('click', () => {
+		nav.classList.toggle('show');
 	});
 
 	// Dropdown stuff

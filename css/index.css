@@ -9,12 +9,33 @@ body {
   font-family: "Josefin Sans", sans-serif;
   background-color: black;
 }
+@media (min-device-width: 360px) and (max-device-width: 1024px) {
+  body {
+    font-size: 20px;
+  }
+}
 body > header {
   height: 80px;
   width: 100vw;
   background-color: rgba(25, 25, 25, 0.9);
   position: fixed;
   z-index: 100;
+}
+body > header .hamburger {
+  display: none;
+  position: absolute;
+  right: 3vw;
+  top: 50%;
+  transform: translateY(-45%);
+  text-decoration: none;
+  color: whitesmoke;
+  font-size: 1.5rem;
+  z-index: 120;
+}
+@media (min-device-width: 360px) and (max-device-width: 1024px) {
+  body > header .hamburger {
+    display: inline-block;
+  }
 }
 body > header nav {
   display: flex;
@@ -26,6 +47,7 @@ body > header nav {
   top: 50%;
   right: 1vw;
   transform: translateY(-50%);
+  z-index: 110;
 }
 body > header nav a {
   display: inline-block;
@@ -44,6 +66,24 @@ body > header nav a.has-dropdown i.fa-caret-right {
 }
 body > header nav a.has-dropdown.open i.fa-caret-right {
   transform: rotateZ(90deg);
+}
+@media (min-device-width: 360px) and (max-device-width: 1024px) {
+  body > header nav {
+    height: 100vh;
+    width: 100vw;
+    transform: translate(0, 100%);
+    transition: transform 1s;
+    position: fixed;
+    top: 0;
+    background-color: #191919;
+  }
+  body > header nav a {
+    display: block;
+    text-align: right;
+  }
+  body > header nav.show {
+    transform: translateX(0);
+  }
 }
 body > header .social {
   position: absolute;
@@ -71,14 +111,15 @@ body > header .social .social-links li a {
 body > header .social .social-links li a:hover {
   color: #e1c3cd;
 }
-body .logo {
+
+.logo {
   background-image: url(../images/hs1600.900.svg);
   background-position: center center;
   background-repeat: no-repeat;
   background-size: 99%;
   transition: transform 2.5s;
 }
-body .logo.main {
+.logo.main {
   width: 20vw;
   height: 20vw;
   min-width: 170px;
@@ -86,10 +127,10 @@ body .logo.main {
   flex: 1 1 20vw;
   display: inline-block;
 }
-body .logo.main:hover {
+.logo.main:hover {
   transform: rotateX(15deg);
 }
-body .logo.header {
+.logo.header {
   width: 100px;
   height: 100px;
   background-image: url(../images/hs1600.900.svg), linear-gradient(rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.4) 100%), url(../images/watercolor.png);
@@ -102,7 +143,8 @@ body .logo.header {
   border: solid #191919 1px;
   z-index: 100;
 }
-body .animate-bg-on-scroll {
+
+.animate-bg-on-scroll {
   display: flex;
   flex: 1 1 auto;
   flex-direction: column;
@@ -114,27 +156,26 @@ body .animate-bg-on-scroll {
   position: relative;
   margin-bottom: 10px;
 }
-body .animate-bg-on-scroll > div:not(.pseudo-background), body .animate-bg-on-scroll > article {
+.animate-bg-on-scroll > div:not(.pseudo-background), .animate-bg-on-scroll > article {
   transition: opacity 2s, transform 2s;
   transition-delay: 0.5s;
 }
-body .animate-bg-on-scroll:not(.main-landing) > div, body .animate-bg-on-scroll:not(.main-landing) > article {
+.animate-bg-on-scroll:not(.main-landing) > div, .animate-bg-on-scroll:not(.main-landing) > article {
   transform: translateY(100%);
 }
-body .animate-bg-on-scroll:not(.main-landing).is-above > div, body .animate-bg-on-scroll:not(.main-landing).is-above > article {
+.animate-bg-on-scroll:not(.main-landing).is-above > div, .animate-bg-on-scroll:not(.main-landing).is-above > article {
   transform: translateY(-100%);
 }
-body .animate-bg-on-scroll.is-visible > div, body .animate-bg-on-scroll.is-visible > article {
+.animate-bg-on-scroll.is-visible > div, .animate-bg-on-scroll.is-visible > article {
   transform: translateY(0);
 }
-body .animate-bg-on-scroll.dom-loaded.scrolled .pseudo-background {
+.animate-bg-on-scroll.dom-loaded.scrolled .pseudo-background {
   background-position: center center, 50% -40px;
 }
-body .animate-bg-on-scroll > *:not(.pseudo-background) {
-  position: relative;
+.animate-bg-on-scroll > *:not(.pseudo-background) {
   z-index: 0;
 }
-body .animate-bg-on-scroll .logo-wrapper {
+.animate-bg-on-scroll .logo-wrapper {
   border-radius: 1.5rem;
   background-color: rgba(225, 195, 205, 0.7);
   padding: 20px;
@@ -143,52 +184,50 @@ body .animate-bg-on-scroll .logo-wrapper {
   min-width: 170px;
   min-height: 170px;
 }
-body .show-on-scroll:not(header).slide-in {
-  transform: translateX(-99.9%);
-  transition: transform 2s, opacity 2s;
-  opacity: 1;
+
+.show-on-scroll.is-visible {
+  opacity: 1 !important;
 }
-body .show-on-scroll:not(header).slide-in.is-visible {
+div.is-visible .show-on-scroll {
   transform: translateX(0);
 }
-body .show-on-scroll header.slide-in {
+
+.show-on-scroll.slide-in {
   transform: translateX(-99%);
-  opacity: 1;
   transition: transform 2s, opacity 2s;
 }
-body .show-on-scroll header.slide-in.is-visible {
+.show-on-scroll.slide-in.is-visible {
   transform: translateX(0);
 }
-body .show-on-scroll.pop-in {
+.show-on-scroll.pop-in {
   transform: scale(0.5);
   opacity: 0;
   transition: transform 2s, opacity 2s;
 }
-body .show-on-scroll.pop-in.is-visible {
+.show-on-scroll.pop-in.is-visible {
   transform: scale(1);
-  opacity: 1;
 }
-body .show-on-scroll.fade-in {
+.show-on-scroll.fade-in {
   opacity: 0;
   transition: transform 1s, opacity 1s;
 }
-body .show-on-scroll.fade-in.is-visible {
+.show-on-scroll.fade-in.is-visible {
   transform: scale(1);
-  opacity: 1;
 }
-body .show-on-scroll.delay-1 {
+.show-on-scroll.delay-1 {
   transition-delay: 1s;
 }
-body .show-on-scroll.delay-2 {
+.show-on-scroll.delay-2 {
   transition-delay: 2.5s;
 }
-body .show-on-scroll.delay-3 {
+.show-on-scroll.delay-3 {
   transition-delay: 10.5s;
 }
-body .show-on-scroll.delay-4 {
+.show-on-scroll.delay-4 {
   transition-delay: 16s;
 }
-body footer {
+
+footer {
   background-color: black;
   max-height: 0;
   width: 100vw;
@@ -201,17 +240,17 @@ body footer {
   left: 0;
   z-index: 145;
 }
-body footer.viewable {
+footer.viewable {
   max-height: 140px;
 }
-body footer .social {
+footer .social {
   position: absolute;
   top: 0;
   left: 50%;
   transform: translateX(-50%);
   z-index: 15;
 }
-body footer .social .social-links {
+footer .social .social-links {
   margin: 0;
   padding: 0;
   list-style: none;
@@ -219,7 +258,7 @@ body footer .social .social-links {
   flex-direction: row;
   height: 100%;
 }
-body footer .social .social-links li a {
+footer .social .social-links li a {
   text-decoration: none;
   color: whitesmoke;
   transition: color 0.2s;
@@ -229,14 +268,14 @@ body footer .social .social-links li a {
   display: inline-block;
   height: 100%;
 }
-body footer .social .social-links li a:hover {
+footer .social .social-links li a:hover {
   color: #e1c3cd;
 }
-body footer div.info {
+footer div.info {
   height: 140px;
   position: relative;
 }
-body footer div.info ul {
+footer div.info ul {
   margin: 0;
   padding: 0;
   list-style: none;
@@ -249,25 +288,26 @@ body footer div.info ul {
   left: 50%;
   transform: translateX(-50%);
 }
-body footer div.info ul li {
+footer div.info ul li {
   flex: 0 1 auto;
   padding: 15px;
   color: whitesmoke;
   border-right: solid 1px whitesmoke;
   white-space: nowrap;
 }
-body footer div.info ul li:last-child {
+footer div.info ul li:last-child {
   border-right: none;
 }
-body footer div.info ul li a {
+footer div.info ul li a {
   text-decoration: none;
   color: whitesmoke;
   transition: color 0.2s;
 }
-body footer div.info ul li a:hover {
+footer div.info ul li a:hover {
   color: #e1c3cd;
 }
-body section.interactive-elements > * {
+
+section.interactive-elements > * {
   opacity: 0;
   max-height: 0;
   overflow: hidden;
@@ -276,27 +316,27 @@ body section.interactive-elements > * {
   transform: translateY(10px);
   transition: opacity 0.2s, transform 0.2s;
 }
-body section.interactive-elements > *.open {
+section.interactive-elements > *.open {
   max-height: 10000px;
   pointer-events: auto;
   opacity: 1;
   transform: translateY(0);
 }
-body section.interactive-elements > *[class*=-dropdown] {
+section.interactive-elements > *[class*=-dropdown] {
   background-color: #e1c3cd;
 }
-body section.interactive-elements > *[class*=-dropdown] ul {
+section.interactive-elements > *[class*=-dropdown] ul {
   padding: 0;
   margin: 0;
   list-style: none;
 }
-body section.interactive-elements > *[class*=-dropdown] ul li {
+section.interactive-elements > *[class*=-dropdown] ul li {
   transition: background-color 0.2s;
 }
-body section.interactive-elements > *[class*=-dropdown] ul li:hover {
+section.interactive-elements > *[class*=-dropdown] ul li:hover {
   background-color: rgba(25, 25, 25, 0.9);
 }
-body section.interactive-elements > *[class*=-dropdown] ul li a {
+section.interactive-elements > *[class*=-dropdown] ul li a {
   color: rgba(25, 25, 25, 0.9);
   text-decoration: none;
   display: block;
@@ -304,10 +344,11 @@ body section.interactive-elements > *[class*=-dropdown] ul li a {
   font-size: 20px;
   transition: color 0.2s;
 }
-body section.interactive-elements > *[class*=-dropdown] ul li a:hover {
+section.interactive-elements > *[class*=-dropdown] ul li a:hover {
   color: #e1c3cd;
 }
-body a.consult {
+
+a.consult {
   display: block;
   text-decoration: none;
   font-size: 36px;
@@ -328,11 +369,12 @@ body a.consult {
   bottom: 0;
   transition: color 0.2s, background-color 0.2s;
 }
-body a.consult:hover {
+a.consult:hover {
   color: rgba(25, 25, 25, 0.9);
   background-color: #e1c3cd;
 }
-body div.cost {
+
+div.cost {
   position: fixed;
   right: 150px;
   bottom: 100px;
@@ -348,13 +390,17 @@ body div.cost {
   box-sizing: border-box;
   transition: transform 1s, opacity 1s;
 }
-body div.cost.show {
+div.cost.show {
   opacity: 1;
   transform: scale(1);
   transition: opacity 1.5s, transform 1.5s;
   transition-delay: 4s;
 }
 
+article {
+  width: 100vw;
+  min-height: calc(100vh - 200px);
+}
 article header {
   display: inline-block;
   text-align: right;
@@ -362,7 +408,7 @@ article header {
   background-color: #e1c3cd;
   position: absolute;
   left: 0;
-  top: 10px;
+  top: 100px;
 }
 article header h1, article header h2 {
   display: inline-block;
@@ -379,6 +425,10 @@ article header h2 {
   font-size: 24px;
   padding-left: 10%;
 }
+article section {
+  max-width: 610px;
+  box-sizing: border-box;
+}
 
 .service.vip-styling article section {
   justify-content: flex-start !important;
@@ -389,11 +439,11 @@ article header h2 {
   flex-wrap: wrap;
   justify-content: center;
   align-items: stretch;
-  padding-top: 150px;
-  position: relative;
+  padding: 20vh 0;
+  box-sizing: border-box;
 }
 .service article section {
-  flex: 0 1 40%;
+  flex: 1 1;
   background-color: rgba(245, 245, 245, 0.9);
   border: solid 4px rgba(25, 25, 25, 0.9);
   box-sizing: border-box;
@@ -403,6 +453,7 @@ article header h2 {
   padding: 20px 20px 20px 65px;
   margin-left: 90px;
   margin-bottom: 50px;
+  margin-top: 50px;
   text-align: left;
   position: relative;
   opacity: 0;
@@ -424,14 +475,11 @@ article header h2 {
   transform: translateY(-50%);
 }
 
-.closet-cleanse article > header {
-  top: -75px;
-}
-
 .about-me article {
   position: relative;
-  width: 100vw;
-  min-height: calc(100vh - 250px);
+}
+.about-me article header {
+  top: 10px;
 }
 .about-me article p {
   font-size: 18px;
@@ -534,6 +582,14 @@ article header h2 {
   background-image: linear-gradient(0deg, black 150px, rgba(0, 0, 0, 0.4) calc(20% + 150px), rgba(0, 0, 0, 0) 100%), url(../images/Virtual.jpg);
 }
 .virtual-styling.is-visible .pseudo-background {
+  transform: scale(1.1) translateY(0);
+  background-position: center center;
+  opacity: 1;
+}
+.hourly-styling .pseudo-background {
+  background-image: linear-gradient(0deg, black 150px, rgba(0, 0, 0, 0.4) calc(20% + 150px), rgba(0, 0, 0, 0) 100%), url(../images/couple-stylish.jpg);
+}
+.hourly-styling.is-visible .pseudo-background {
   transform: scale(1.1) translateY(0);
   background-position: center center;
   opacity: 1;

@@ -3,6 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <title>Hamilton Styling</title>
+    <script src="js/index.js"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-G3N8VDX8NP"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'G-G3N8VDX8NP');
+    </script>
     <link
             href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600;700&display=swap"
             rel="stylesheet">
@@ -12,7 +25,6 @@
     <link
             rel="stylesheet"
             href="css/index.css"/>
-    <script src="js/index.js"></script>
     <link
             rel="apple-touch-icon-precomposed"
             sizes="57x57"
@@ -121,6 +133,7 @@
             </li>
         </ul>
     </div>
+    <a class="hamburger" href="javascript:void(0);"><i class="fa fa-lg fa-bars"></i></a>
     <nav>
         <a href="/">Home</a>
         <a
@@ -144,13 +157,33 @@
     </div>
 </div>
 <div
+        id="hourly-styling"
+        data-button-name="consultation"
+        data-href="#hourly-styling"
+        data-cost="$75/hr"
+        class="animate-bg-on-scroll hourly-styling service">
+    <div class="pseudo-background"></div>
+    <article>
+        <header class="show-on-scroll slide-in">
+            <h1>Hourly Styling</h1>
+            <h2>For whatever you may need</h2>
+        </header>
+        <section class="show-on-scroll slide-in">
+            <p>Is there an event on the horizon that you want to look and feel amazing for? We can make that happen!
+                I’ll make sure you have the perfect look for whatever comes your way. Schedule your free consultation
+                today and let’s get started!
+            </p>
+        </section>
+    </article>
+</div>
+<div
         id="bridal-styling"
         data-button-name="Bridal Consultation"
         data-href="#bridal-styling"
         data-cost="$2100"
         class="animate-bg-on-scroll bridal-styling service">
     <div class="pseudo-background"></div>
-    <article>
+    <article class="two-column">
         <header class="show-on-scroll slide-in">
             <h1>Bridal Styling</h1>
             <h2>Look perfect for your perfect day</h2>
@@ -213,12 +246,12 @@
         data-cost="$740"
         class="animate-bg-on-scroll closet-cleanse service">
     <div class="pseudo-background"></div>
-    <article>
-        <header class="show-on-scroll">
+    <article class="two-column">
+        <header class="show-on-scroll slide-in">
             <h1>Closet Cleanse & Style</h1>
             <h2>How It Works</h2>
         </header>
-        <section class="show-on-scroll">
+        <section class="show-on-scroll slide-in">
             <img
                     src="images/2.png"
                     height="100px"/>
@@ -229,7 +262,7 @@
                 unnecessary items, and giving you a beautifully organized closet for maximum ease of use.
             </p>
         </section>
-        <section class="show-on-scroll">
+        <section class="show-on-scroll pop-in delay-1">
             <img
                     src="images/3.png"
                     height="100px"/>
@@ -253,7 +286,7 @@
         data-cost="$2200/$8100"
         class="animate-bg-on-scroll vip-styling service">
     <div class="pseudo-background"></div>
-    <article>
+    <article class="two-column">
         <header class="show-on-scroll slide-in">
             <h1>VIP Styling</h1>
             <h2>Personal Styling on Demand</h2>
@@ -326,7 +359,7 @@
         class="animate-bg-on-scroll virtual-styling service">
     <div class="pseudo-background"></div>
     <article>
-        <header class="show-on-scroll fade-in">
+        <header class="show-on-scroll slide-in">
             <h1>Virtual Styling</h1>
             <h2>What You Get</h2>
         </header>
@@ -349,7 +382,7 @@
         class="animate-bg-on-scroll about-me">
     <div class="pseudo-background"></div>
     <article>
-        <header class="show-on-scroll pop-in">
+        <header class="show-on-scroll slide-in">
             <h1>About Me</h1>
             <h2>A life in styling</h2>
         </header>
@@ -416,6 +449,7 @@
 <section class="interactive-elements">
     <div class="services-dropdown">
         <ul>
+            <li><a href="#hourly-styling">Hourly Styling</a></li>
             <li><a href="#bridal-styling">Bridal Styling</a></li>
             <li><a href="#total-wedding-styling">Total Wedding Styling</a></li>
             <li><a href="#closet-cleanse">Closet Cleanse & Style</a></li>
