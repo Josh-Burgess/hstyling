@@ -118,6 +118,8 @@ body > header .social .social-links {
   list-style: none;
   display: flex;
   flex-direction: row;
+  align-items: center;
+  justify-content: center;
   height: 100%;
 }
 body > header .social .social-links li a {
@@ -278,6 +280,8 @@ footer .social .social-links {
   list-style: none;
   display: flex;
   flex-direction: row;
+  align-items: center;
+  justify-content: center;
   height: 100%;
 }
 footer .social .social-links li a {
@@ -633,6 +637,11 @@ article section {
     left: 20vw;
     bottom: 5vh;
     max-width: 20vw;
+  }
+}
+@media (min-device-width: 360px) and (max-device-width: 1024px) {
+  .about-me article p {
+    transition-delay: 0s !important;
   }
 }
 
