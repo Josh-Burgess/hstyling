@@ -24,6 +24,8 @@ $standard-black-fade-bg: linear-gradient(0deg, black 15rem, rgba(0, 0, 0, 0.4) c
   list-style: none;
   display: flex;
   flex-direction: row;
+  align-items: center;
+  justify-content: center;
   height: 100%;
 
   li {
