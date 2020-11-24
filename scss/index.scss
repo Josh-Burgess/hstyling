@@ -722,6 +722,10 @@ article {
           max-width: 20vw;
         }
       }
+
+      @include for-phone-only {
+        transition-delay: 0s!important;
+      }
     }
   }
 }
