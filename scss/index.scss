@@ -49,10 +49,6 @@ $standard-black-fade-bg: linear-gradient(0deg, black 15rem, rgba(0, 0, 0, 0.4) c
 html {
   font-size: 10px;
   overflow-x: hidden;
-
-  @include for-phone-only {
-    font-size: 20px;
-  }
 }
 
 body {
@@ -577,6 +573,10 @@ article {
     left: 0;
     top: 10rem;
 
+    @include for-phone-only {
+      top: 5rem;
+    }
+
     h1, h2 {
       display: inline-block;
       color: $branding_black;
@@ -688,7 +688,7 @@ article {
       top: 1rem;
     }
 
-    p {
+    div.p {
       font-size: 1.8rem;
       background-color: $branding_white_alpha;
       border: solid .4rem $branding_black_alpha;

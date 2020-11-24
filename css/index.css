@@ -3,11 +3,6 @@ html {
   font-size: 10px;
   overflow-x: hidden;
 }
-@media (min-device-width: 360px) and (max-device-width: 1024px) {
-  html {
-    font-size: 20px;
-  }
-}
 
 body {
   min-height: calc(100vh + 1rem);
@@ -510,6 +505,11 @@ article header {
   left: 0;
   top: 10rem;
 }
+@media (min-device-width: 360px) and (max-device-width: 1024px) {
+  article header {
+    top: 5rem;
+  }
+}
 article header h1, article header h2 {
   display: inline-block;
   color: #191919;
@@ -607,7 +607,7 @@ article section {
 .about-me article header {
   top: 1rem;
 }
-.about-me article p {
+.about-me article div.p {
   font-size: 1.8rem;
   background-color: rgba(245, 245, 245, 0.9);
   border: solid 0.4rem rgba(25, 25, 25, 0.9);
@@ -615,32 +615,32 @@ article section {
   padding: 2rem;
 }
 @media (min-device-width: 1025px) {
-  .about-me article p {
+  .about-me article div.p {
     position: absolute;
   }
-  .about-me article p#p1 {
+  .about-me article div.p#p1 {
     right: 5vw;
     top: 0;
     max-width: 25vw;
   }
-  .about-me article p#p2 {
+  .about-me article div.p#p2 {
     left: 2vw;
     top: 12vh;
     max-width: 36vw;
   }
-  .about-me article p#p3 {
+  .about-me article div.p#p3 {
     right: 4vw;
     bottom: 10vh;
     max-width: 36vw;
   }
-  .about-me article p#p4 {
+  .about-me article div.p#p4 {
     left: 20vw;
     bottom: 5vh;
     max-width: 20vw;
   }
 }
 @media (min-device-width: 360px) and (max-device-width: 1024px) {
-  .about-me article p {
+  .about-me article div.p {
     transition-delay: 0s !important;
   }
 }
