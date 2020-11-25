@@ -28,15 +28,14 @@ document.addEventListener('DOMContentLoaded', () => {
     // Interaction Observer Stuff
     let ioOptions = {
         root: null,
-        rootMargin: '0px',
+        rootMargin: '10px',
         threshold: [0.0, 0.1, 0.5, 1.0]
     };
     const ioCallback = (entries) => {
         entries.forEach(entry => {
-            const isAbove = entry.boundingClientRect.y <= entry.rootBounds.y + entry.target.offsetHeight;
+            const isAbove = entry.boundingClientRect.y <= entry.rootBounds.y + entry.target.parentElement.offsetHeight;
             if (entry.isIntersecting) {
-                if (entry.target.classList.contains('observable-anchor')
-                    && ((entry.intersectionRatio >= 0.1 && !isAbove) || (entry.intersectionRatio >= 0.5 && isAbove))) {
+                if (((entry.intersectionRatio >= 0.1 && !isAbove) || (entry.intersectionRatio >= 0.5 && isAbove))) {
                     entry.target.parentElement.classList.add('is-visible');
 
                     window.history.pushState(
@@ -57,23 +56,27 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
 
                     scheduleBtn.innerHTML = `<i class="indicator"></i> Schedule ${entry.target.parentElement.getAttribute('data-button-name')}`;
-                    entry.target.classList.remove('is-above');
-                } else if (entry.target.classList.contains('show-on-scroll')) {
-                    entry.target.classList.add('is-visible');
-                }
-                if (!isAbove) {
-                    entry.target.classList.remove('is-above');
+                    entry.target.parentElement.classList.remove('is-above');
+
+                    entry.target.parentElement.querySelectorAll('.show-on-scroll').forEach((e) => e.classList.add('is-visible'));
+
+                    if (!isAbove) {
+                        entry.target.parentElement.classList.remove('is-above');
+                    }
                 }
             } else {
-                entry.target.classList.remove('is-visible');
+                entry.target.parentElement.classList.remove('is-visible');
+                entry.target.parentElement.querySelectorAll('.show-on-scroll').forEach((e) => {
+                    e.classList.remove('is-visible');
+                });
                 if (isAbove) {
-                    entry.target.classList.add('is-above');
+                    entry.target.parentElement.classList.add('is-above');
                 }
             }
         });
     };
     const observer = new IntersectionObserver(ioCallback, ioOptions);
-    const targets = document.querySelectorAll('.show-on-scroll, .observable-anchor');
+    const targets = document.querySelectorAll('.observable-anchor');
 
     targets.forEach(target => {
         observer.observe(target);
