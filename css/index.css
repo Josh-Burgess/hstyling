@@ -520,10 +520,20 @@ article header h1 {
   line-height: 5rem;
   white-space: nowrap;
 }
+@media (min-device-width: 360px) and (max-device-width: 1024px) {
+  article header h1 {
+    font-size: 2.4rem;
+  }
+}
 article header h2 {
   text-transform: uppercase;
   font-size: 2.4rem;
   padding-left: 10%;
+}
+@media (min-device-width: 360px) and (max-device-width: 1024px) {
+  article header h2 {
+    font-size: 1.8rem;
+  }
 }
 article section {
   max-width: 61rem;
@@ -736,6 +746,19 @@ article section {
   transform: scale(1.1) translateY(0);
   background-position: center, 50% 0;
   opacity: 1;
+}
+
+a.observable-anchor {
+  position: absolute;
+  display: block;
+  top: 5vh;
+  width: 95vw;
+  height: 2rem;
+  pointer-events: none;
+}
+a.observable-anchor:last-child {
+  top: auto;
+  bottom: 5vh;
 }
 
 /*# sourceMappingURL=index.css.map */
