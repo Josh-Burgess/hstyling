@@ -518,7 +518,7 @@ article header {
   background-color: #e1c3cd;
   position: absolute;
   left: 0;
-  top: 10rem;
+  top: 8rem;
 }
 @media (min-device-width: 360px) and (max-device-width: 1024px) {
   article header {
