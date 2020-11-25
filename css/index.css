@@ -309,15 +309,30 @@ footer div.info ul {
   left: 50%;
   transform: translateX(-50%);
 }
+@media (min-device-width: 360px) and (max-device-width: 1024px) {
+  footer div.info ul {
+    flex-direction: column;
+  }
+}
 footer div.info ul li {
   flex: 0 1 auto;
-  padding: 1.5rem;
   color: whitesmoke;
-  border-right: solid 0.1rem whitesmoke;
   white-space: nowrap;
 }
-footer div.info ul li:last-child {
-  border-right: none;
+@media (min-device-width: 1025px) {
+  footer div.info ul li {
+    padding: 1.5rem;
+    border-right: solid 0.1rem whitesmoke;
+  }
+  footer div.info ul li:last-child {
+    border-right: none;
+  }
+}
+@media (min-device-width: 360px) and (max-device-width: 1024px) {
+  footer div.info ul li {
+    font-size: 1.6rem;
+    padding: 0.5rem 0;
+  }
 }
 footer div.info ul li a {
   text-decoration: none;

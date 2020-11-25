@@ -361,15 +361,26 @@ footer {
       left: 50%;
       transform: translateX(-50%);
 
+      @include for-phone-only {
+        flex-direction: column;
+      }
+
       li {
         flex: 0 1 auto;
-        padding: 1.5rem;
         color: $branding_white;
-        border-right: solid .1rem $branding_white;
         white-space: nowrap;
 
-        &:last-child {
-          border-right: none;
+        @include not-phone {
+          padding: 1.5rem;
+          border-right: solid .1rem $branding_white;
+          &:last-child {
+            border-right: none;
+          }
+        }
+
+        @include for-phone-only {
+          font-size: 1.6rem;
+          padding: .5rem 0;
         }
 
         a {
@@ -732,7 +743,7 @@ article {
       }
 
       @include for-phone-only {
-        transition-delay: 0s!important;
+        transition-delay: 0s !important;
       }
     }
   }
